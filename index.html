@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ireland 2027 — Forty</title>
+<meta name="description" content="Planning a 40th birthday trip to Ireland with the people who matter most.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+
+<!-- Fixed full-bleed hero behind everything. Drop a real photo at
+     assets/hero.jpg (Cliffs of Moher / Wild Atlantic Way works beautifully)
+     and it appears automatically over the gradient — no code change needed. -->
+<div class="hero-fixed" aria-hidden="true">
+  <div class="hero-photo"></div>
+  <div class="hero-grain"></div>
+</div>
+
+<nav class="topnav">
+  <a href="#top" class="wordmark">Ireland <span>’27</span></a>
+  <ul>
+    <li><a href="#crew">crew</a></li>
+    <li><a href="#budget">budget</a></li>
+    <li><a href="#planner">planner</a></li>
+    <li><a href="#places">places</a></li>
+  </ul>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-inner">
+    <p class="kicker">A 40th birthday, somewhere green</p>
+    <h1 class="hero-title">
+      <span>Ireland.</span>
+      <span>2027.</span>
+      <span class="accent">Forty.</span>
+    </h1>
+    <p class="hero-sub">One trip. One-to-two weeks. The people who matter most.<br>
+      Let's plan it with open hearts and open minds.</p>
+    <a class="cta" href="#crew">Join the crew <span class="arrow">↓</span></a>
+  </div>
+</header>
+
+<main class="content">
+
+  <!-- ============================ CREW ============================ -->
+  <section class="panel" id="crew">
+    <div class="panel-head">
+      <div class="label">01 — The crew</div>
+      <h2>Who's coming?</h2>
+      <p class="panel-intro">Add or remove anyone. Nothing's locked in — this is just who we're
+        dreaming about. The headcount quietly powers the budget and the trip planner below.</p>
+    </div>
+
+    <div id="crew-list" class="crew-grid"></div>
+
+    <form id="crew-add" class="add-row" autocomplete="off">
+      <input type="text" id="crew-name" placeholder="Add someone…" aria-label="New person's name" maxlength="40" required>
+      <input type="text" id="crew-city" placeholder="Flying from (optional)" aria-label="Departure city" maxlength="40">
+      <button type="submit">Add</button>
+    </form>
+  </section>
+
+  <!-- ============================ BUDGET ============================ -->
+  <section class="panel" id="budget">
+    <div class="panel-head">
+      <div class="label">02 — The pool</div>
+      <h2>What can we afford, together?</h2>
+      <p class="panel-intro">Everyone quietly puts in what feels right. <strong>No one sees anyone
+        else's number</strong> — once you save, yours turns to dots. We only ever show the group
+        total, so the trip is shaped by all of us, not by who pays what.</p>
+    </div>
+
+    <div class="budget-layout">
+      <div class="budget-entry">
+        <label for="budget-person">I'm…</label>
+        <select id="budget-person" aria-label="Who are you?"></select>
+
+        <label for="budget-amount">My comfortable budget (<span class="cur-sym">$</span>)</label>
+        <div class="budget-input-row">
+          <input type="number" id="budget-amount" placeholder="e.g. 2500" min="0" step="50" inputmode="numeric">
+          <button id="budget-save" type="button">Save privately</button>
+        </div>
+        <p class="budget-note" id="budget-note">Saved on this device only. Truly anonymous group
+          sync is coming in a later version.</p>
+      </div>
+
+      <div class="budget-readout">
+        <div class="stat big">
+          <div class="stat-value" id="pool-total">$0</div>
+          <div class="stat-label">in the pool</div>
+        </div>
+        <div class="stat-row">
+          <div class="stat">
+            <div class="stat-value" id="pool-count">0 / 0</div>
+            <div class="stat-label">have chipped in</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value" id="pool-avg">$0</div>
+            <div class="stat-label">average each</div>
+          </div>
+        </div>
+        <div class="tier-chip" id="pool-tier">Add a few budgets to see what tier we can reach.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ ESTIMATOR ============================ -->
+  <section class="panel" id="estimator">
+    <div class="panel-head">
+      <div class="label">03 — The rough numbers</div>
+      <h2>What might it actually cost?</h2>
+      <p class="panel-intro">Honest ballpark ranges so no one's blindsided — flights, a roof,
+        a hire car, and day-to-day spending. Tweak the knobs; every number updates live.</p>
+    </div>
+
+    <div class="estimator-controls">
+      <label>Trip length
+        <select id="est-days">
+          <option value="7">1 week (7 days)</option>
+          <option value="10" selected>10 days</option>
+          <option value="14">2 weeks (14 days)</option>
+        </select>
+      </label>
+      <label>Where we sleep
+        <select id="est-lodging">
+          <option value="hostel">Hostels / budget</option>
+          <option value="house" selected>Self-catering house (shared)</option>
+          <option value="mid">Mid-range hotels</option>
+          <option value="nice">Nice hotels</option>
+        </select>
+      </label>
+      <label>Hire cars
+        <select id="est-cars">
+          <option value="0">No cars (trains & buses)</option>
+          <option value="1" selected>1 car</option>
+          <option value="2">2 cars</option>
+          <option value="3">3 cars</option>
+        </select>
+      </label>
+      <label>Flying from
+        <select id="est-region">
+          <option value="us_east" selected>US / Canada — East</option>
+          <option value="us_west">US / Canada — West</option>
+          <option value="europe">Europe</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="estimate-grid" id="estimate-grid"></div>
+    <div class="estimate-verdict" id="estimate-verdict"></div>
+  </section>
+
+  <!-- ============================ PLANNER ============================ -->
+  <section class="panel" id="planner">
+    <div class="panel-head">
+      <div class="label">04 — The plan</div>
+      <h2>Build the trip around what we love</h2>
+      <p class="panel-intro">Tell it what you're hungry for. It'll sketch a few different routes
+        from our places list — then re-roll for more. None of it's binding; it's a starting shape.</p>
+    </div>
+
+    <div id="vibe-controls" class="vibe-controls"></div>
+
+    <div class="planner-actions">
+      <label class="pace-toggle">Pace
+        <select id="plan-pace">
+          <option value="slow">Slow & easy</option>
+          <option value="balanced" selected>Balanced</option>
+          <option value="packed">See it all</option>
+        </select>
+      </label>
+      <button id="plan-generate" type="button">Generate trips ✨</button>
+    </div>
+
+    <div id="plan-results" class="plan-results"></div>
+  </section>
+
+  <!-- ============================ PLACES ============================ -->
+  <section class="panel" id="places">
+    <div class="panel-head">
+      <div class="label">05 — The places</div>
+      <h2>Where we could go</h2>
+      <p class="panel-intro">The seed list. Renée's legendary binder will grow this into something
+        huge — for now, a taste of the island. Filter by what you're after.</p>
+    </div>
+
+    <div id="place-filters" class="place-filters"></div>
+    <div id="place-grid" class="place-grid"></div>
+  </section>
+
+  <footer class="site-footer">
+    <p>Made with love for the trip of a lifetime · <span id="year"></span></p>
+    <p class="footer-soft">Open hearts, open minds. Sláinte. 🍀</p>
+  </footer>
+
+</main>
+
+<script src="data/places.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

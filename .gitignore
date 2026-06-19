@@ -1,0 +1,16 @@
+# OS / editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+.vscode/
+.idea/
+
+# Netlify local state
+.netlify/
+
+# Local preview/launch config (machine-specific)
+.claude/
+
+# Dependencies (none yet, but just in case Phase 2 adds tooling)
+node_modules/
