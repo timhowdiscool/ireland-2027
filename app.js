@@ -149,8 +149,8 @@
     state.crew.forEach((p) => {
       const opt = document.createElement("option");
       opt.value = p.id;
-      const has = typeof state.budgets[p.id] === "number";
-      opt.textContent = p.name + (has ? "  ✓ contributed" : "");
+      // Never mark who has/hasn't contributed — keep it anonymous.
+      opt.textContent = p.name;
       sel.appendChild(opt);
     });
     if (prev && state.crew.some((p) => p.id === prev)) sel.value = prev;
@@ -158,17 +158,11 @@
   }
 
   function reflectAmountField() {
-    const sel = $("#budget-person");
+    // Always neutral — selecting a person must never reveal whether they've
+    // already contributed. Saving just updates that person's hidden number.
     const input = $("#budget-amount");
-    const id = sel.value;
-    if (typeof state.budgets[id] === "number") {
-      // Mask it — even YOU only see dots once saved, to keep the habit honest.
-      input.value = "";
-      input.placeholder = "•••• saved — type to change";
-    } else {
-      input.value = "";
-      input.placeholder = "e.g. 2500";
-    }
+    input.value = "";
+    input.placeholder = "e.g. 2500";
   }
 
   function saveBudget() {
@@ -211,9 +205,8 @@
   }
 
   function renderBudgetReadout() {
-    const { total, contributors, headcount, avg } = poolStats();
+    const { total, contributors, avg } = poolStats();
     $("#pool-total").textContent = fmt$(total);
-    $("#pool-count").textContent = contributors + " / " + headcount;
     $("#pool-avg").textContent = fmt$(avg);
     const tierEl = $("#pool-tier");
     if (contributors === 0) {
