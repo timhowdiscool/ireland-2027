@@ -1,5 +1,12 @@
 # assets
 
+## Current hero
+
+`hero.jpg` is the Cliffs of Moher by **Alina Rossoshanska** via
+[Pexels](https://www.pexels.com/photo/famous-cliffs-of-moher-in-ireland-23644344/)
+(Pexels License — free for commercial use, no attribution required; credited here as a courtesy).
+To change it, just overwrite `hero.jpg` — see below.
+
 ## hero.jpg — the splash photo (optional but recommended)
 
 The site ships with a hand-built emerald→stone gradient hero that looks good on its own.
